@@ -1,5 +1,5 @@
 {
-  "name": "@yeesahs-cakes/server",
+  "name": "@yeezahs-cakes/server",
   "version": "0.0.1",
   "private": true,
   "nx": {
@@ -27,18 +27,21 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@yeesahs-cakes/server:build",
+          "buildTarget": "@yeezahs-cakes/server:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@yeesahs-cakes/server:build:development"
+            "buildTarget": "@yeezahs-cakes/server:build:development"
           },
           "production": {
-            "buildTarget": "@yeesahs-cakes/server:build:production"
+            "buildTarget": "@yeezahs-cakes/server:build:production"
           }
         }
       }
     }
+  },
+    "dependencies": {
+    "nestjs-zod": "5.1.1"
   }
 }

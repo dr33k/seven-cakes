@@ -1,8 +1,33 @@
 import { Mail, Phone, Instagram, MapPin, MessageCircle } from 'lucide-react';
+import { useForm} from 'react-hook-form';
+import { EventType, CakeOrderSchema, CakeOrderDto} from '@yeezahs-cakes/shared-models';
+import { useState } from 'react';
+import { zodResolver} from '@hookform/resolvers/zod';
 
 export async function loader() {return {}}
 
 export default function Contact() {
+  const [showModal, setShowModal] = useState(false);
+
+  const {register, handleSubmit, formState: {errors}, reset} = useForm<CakeOrderDto>({
+    resolver: zodResolver(CakeOrderSchema)
+  });
+
+  const onSubmit = async (cakeOrder: CakeOrderDto)=>{
+    
+    const response = await fetch('/api/cakes', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(cakeOrder)
+    });
+    
+    if(response.ok){
+      setShowModal(true);
+      reset();
+    }else{
+      alert("There was a problem submitting the form. Please contact the administratior");
+    }
+  }
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
@@ -108,54 +133,68 @@ export default function Contact() {
         <section className="mt-16 max-w-3xl mx-auto">
           <div className="bg-white rounded-lg p-8 md:p-12 shadow-lg border-2 border-primary/20">
             <h2 className="text-3xl mb-6 text-center text-primary">Send Us a Message</h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block mb-2 text-foreground">Name</label>
                   <input 
+                  {...register('name')}
                     type="text" 
                     className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
                     placeholder="Your name"
                   />
+                  {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+
                 </div>
                 <div>
                   <label className="block mb-2 text-foreground">Email</label>
-                  <input 
+                  <input
+                  {...register('email')} 
                     type="email" 
                     className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+
                 </div>
               </div>
               
               <div>
                 <label className="block mb-2 text-foreground">Phone</label>
                 <input 
+                {...register('phone')}
                   type="tel" 
                   className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
                   placeholder="+1 (234) 567-890"
                 />
+                {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+
               </div>
               
               <div>
                 <label className="block mb-2 text-foreground">Event Type</label>
-                <select className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors">
-                  <option>Select event type</option>
-                  <option>Wedding</option>
-                  <option>Birthday</option>
-                  <option>Anniversary</option>
-                  <option>Corporate Event</option>
-                  <option>Other</option>
+                <select {...register('eventType')} className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
+                >
+                  <option>Please select a type of event</option>
+                  <option value={EventType.WEDDING}>Wedding</option>
+                  <option value={EventType.BIRTHDAY}>Birthday</option>
+                  <option value={EventType.CORPORATE}>Corporate Event</option>
+                  <option value={EventType.ANNIVERSARY}>Anniversary</option>
+                  <option value={EventType.OTHER}>Other</option>
                 </select>
+                {errors.eventType && <p className="text-red-500 text-sm">{errors.eventType.message}</p>}
               </div>
               
               <div>
                 <label className="block mb-2 text-foreground">Message</label>
                 <textarea 
+                {...register('message')}
                   rows={6}
                   className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your dream cake..."
                 ></textarea>
+                {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+
               </div>
               
               <button 
@@ -165,6 +204,27 @@ export default function Contact() {
                 Send Message
               </button>
             </form>
+
+            {/* Success Modal */}
+            {showModal && (
+              <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                <div className="bg-white p-8 rounded-lg shadow-xl text-center animate-in fade-in zoom-in duration-300">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2">Success!</h2>
+                  <p className="text-gray-600 mb-6">Your form has been submitted.</p>
+                  <button 
+                    onClick={() => setShowModal(false)}
+                    className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition"
+                  >
+                    Great!
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </div>

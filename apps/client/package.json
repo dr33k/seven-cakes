@@ -111,7 +111,9 @@
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
     "@tailwindcss/vite": "4.1.12",
-    "@vitejs/plugin-react": "4.7.0"
+    "@vitejs/plugin-react": "4.7.0",
+        "@nx/vite": "20.8.3"
+
   },
   "peerDependencies": {
     "react": "19.0.0",
@@ -129,5 +131,9 @@
     "overrides": {
       "vite": "6.3.5"
     }
+  },
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
   }
 }

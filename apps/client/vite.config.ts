@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -11,10 +11,7 @@ export default defineConfig(() => ({
     port: 4200,
     host: 'localhost',
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        secure: false,
-      }
+      '/api': 'http://localhost:3000'
     },
   },
   preview: {
@@ -22,7 +19,7 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [!process.env.VITEST && reactRouter(),
-    react(),
+    nxViteTsPaths(),
     tailwindcss(),
   ],
   // Uncomment this if you are using workers.
