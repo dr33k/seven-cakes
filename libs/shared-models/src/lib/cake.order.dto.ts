@@ -12,7 +12,7 @@ export enum EventType{
 export const CakeOrderSchema = z.object({
   name: z.string()
   .min(3, 'Name must be at least 3 characters')
-  .max(100, 'Name mus   t be at most 100 characters')
+  .max(100, 'Name must be at most 100 characters')
   .regex(/^[A-Za-z\s]{3,100}$/,'Please enter a valid name (letters and spaces only)'),
   email: z.email('Please enter a valid email address'),
   phone: z.string().regex(/^\d{11}$/, 'Phone number must be exactly 11 digits'),

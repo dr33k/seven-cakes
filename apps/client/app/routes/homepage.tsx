@@ -1,7 +1,9 @@
-import { useCallback, useState, useLayoutEffect, useEffect, useRef } from 'react';
-import Autoplay from 'embla-carousel-autoplay';
-import 'slick-carousel/slick/slick-theme.css';
 import { Star, Quote } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { CakeOrderDto } from '../../../../libs/shared-models/src/lib/cake.order.dto';
 
 
 const cakeImages = [
@@ -61,6 +63,63 @@ const testimonials = [
 export async function loader() {return {}}
 
 export function Homepage() {
+  // 1. Initialize Autoplay plugin with options
+  const autoplayOptions = { 
+    delay: 1500, 
+    stopOnInteraction: false, 
+    stopOnMouseEnter: true 
+  };
+  
+  // 2. Initialize Embla with options and the Autoplay plugin
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true,
+      align: 'start',
+      skipSnaps: false
+    }, 
+    [Autoplay(autoplayOptions)]
+  );
+
+  // 3. State to track the active index for the dots
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  // 4. Navigation handlers
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  // 5. Set up listeners when API is ready
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+
+    // Force autoplay play on mount/re-init
+    const autoplay = emblaApi?.plugins()?.autoplay;
+    if (autoplay) autoplay.play();
+
+    return () => emblaApi.off('select', onSelect);
+  }, [emblaApi, onSelect]);
+
+  // Guard clause for empty data
+  if (!cakeImages || cakeImages.length === 0) {
+    return (
+      <div className="w-full h-[500px] bg-gray-100 animate-pulse rounded-xl flex items-center justify-center">
+        <p className="text-gray-400">Loading gallery...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -76,7 +135,7 @@ export function Homepage() {
           
            {/* Carousel*/}
             <div className="relative group max-w-5xl mx-auto px-4">
-              <div className="overflow-hidden rounded-xl" >
+              <div className="overflow-hidden rounded-xl" ref={emblaRef}>
                 
                 {/* Container: This holds all the slides in a row */}
                 <div className="flex">
@@ -102,6 +161,36 @@ export function Homepage() {
                 </div>
               </div>
 
+            {/* Custom Navigation Buttons (Visible on Hover) */}
+            <button
+              onClick={scrollPrev}
+              className="absolute left-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full text-pink-600 shadow-lg transition-all transform hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 z-20 flex items-center justify-center"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={24} strokeWidth={3} />
+            </button>
+
+            <button
+              onClick={scrollNext}
+              className="absolute right-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full text-pink-600 shadow-lg transition-all transform hover:scale-110 active:scale-95 opacity-0 group-hover:opacity-100 z-20 flex items-center justify-center"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={24} strokeWidth={3} />
+            </button>
+
+            {/* Enhanced Progress Dots */}
+            <div className="flex justify-center gap-3 mt-8">
+              {cakeImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                  className={`h-2.5 transition-all duration-300 rounded-full ${
+                    selectedIndex === index ? 'w-8 bg-pink-500' : 'w-2.5 bg-pink-200 hover:bg-pink-300'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
             </div>
         </div>
       </section>

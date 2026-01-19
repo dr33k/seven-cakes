@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { CakeOrderDto } from '@yeezahs-cakes/shared-models';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Hello API' };
+  sendEmail(order: CakeOrderDto){
+
   }
 }

@@ -9,6 +9,7 @@ export class AppController {
   @Post()
   async orderCake(@Body() cakeOrder: CakeOrderDto){
     console.log('Recieved Data: ', cakeOrder);
-    return {message: 'User created successfully'};
+    this.appService.sendEmail(cakeOrder)
+    return {message: 'Email sent'};
   }
 }
