@@ -7,6 +7,12 @@ import { zodResolver} from '@hookform/resolvers/zod';
 export async function loader() {return {}}
 
 export default function Contact() {
+
+  const targetPhone = '+23400000000';
+  const targetWAPhone = '+23400000000';
+  const targetEmail = 'info@yeezahscakes.com';
+  const instagramLink = "https://www.instagram.com/yeezahs.cakes/" ;
+
   const [showModal, setShowModal] = useState(false);
 
   const {register, handleSubmit, formState: {errors}, reset} = useForm<CakeOrderDto>({
@@ -43,7 +49,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           {/* Phone */}
           <a 
-            href="tel:+1234567890" 
+            href={'tel:'+targetPhone} 
             className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-primary/20 hover:border-primary/40 group"
           >
             <div className="flex flex-col items-center text-center">
@@ -58,7 +64,7 @@ export default function Contact() {
 
           {/* Email */}
           <a 
-            href="mailto:info@yeezahscakes.com" 
+            href={'mailto:'+targetEmail}
             className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-primary/20 hover:border-primary/40 group"
           >
             <div className="flex flex-col items-center text-center">
@@ -73,7 +79,7 @@ export default function Contact() {
 
           {/* WhatsApp */}
           <a 
-            href="https://wa.me/1234567890" 
+            href={"https://wa.me/"+targetWAPhone} 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-primary/20 hover:border-primary/40 group"
@@ -101,7 +107,7 @@ export default function Contact() {
               See our latest creations, behind-the-scenes content, and get inspired for your next cake order!
             </p>
             <a 
-              href="https://www.instagram.com/yeezahs.cakes/" 
+              href={instagramLink}
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md"
@@ -132,7 +138,7 @@ export default function Contact() {
         {/* Contact Form Section */}
         <section className="mt-16 max-w-3xl mx-auto">
           <div className="bg-white rounded-lg p-8 md:p-12 shadow-lg border-2 border-primary/20">
-            <h2 className="text-3xl mb-6 text-center text-primary">Send Us a Message</h2>
+            <h2 className="text-3xl mb-6 text-center text-primary">Order a Cake</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -152,7 +158,7 @@ export default function Contact() {
                   {...register('email')} 
                     type="email" 
                     className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
-                    placeholder="your@email.com"
+                    placeholder="your@email.com (We'll contact you with this)"
                   />
                   {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
@@ -214,8 +220,8 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h2 className="text-2xl font-bold mb-2">Success!</h2>
-                  <p className="text-gray-600 mb-6">Your form has been submitted.</p>
+                  <h2 className="text-2xl font-bold mb-2">Sent!</h2>
+                  {/* <p className="text-gray-600 mb-6">Yeezah's Team has been notified</p> */}
                   <button 
                     onClick={() => setShowModal(false)}
                     className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition"
