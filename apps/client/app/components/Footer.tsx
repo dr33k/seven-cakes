@@ -41,6 +41,8 @@ export function Footer() {
         </div>
         
         <div className="mt-8 pt-8 border-t border-primary/20 text-center text-muted-foreground">
+          <a href="https://www.flaticon.com/free-icons/cake" title="cake icons">Cake favicon created by surang - Flaticon</a>
+
           <p>&copy; {new Date().getFullYear()} Yeezah's Cakes. All rights reserved.</p>
         </div>
       </div>

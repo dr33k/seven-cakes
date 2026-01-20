@@ -16,8 +16,13 @@ export class AppService {
       from: this.from,
       replyTo: order.email,
       subject: order.name + "'s Cake: " + order.eventType.toString(),
-      template: '../assets/templates/new_order.hbs',
-      context: {...order, eventType: order.eventType.toString().toUpperCase()}
+      template: '../apps/server/src/assets/templates/new_order.hbs',
+      context: {
+        ...order, 
+        eventType: order.eventType.toString().toUpperCase(),
+        address: order.address || "None Specified"
+      }
+
     })
   }
 }

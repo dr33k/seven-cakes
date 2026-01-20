@@ -1,8 +1,9 @@
-import { Mail, Phone, Instagram, MapPin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Instagram, MapPin, MessageCircle, Radio } from 'lucide-react';
 import { useForm} from 'react-hook-form';
 import { EventType, CakeOrderSchema, CakeOrderDto} from '@yeezahs-cakes/shared-models';
 import { useState } from 'react';
 import { zodResolver} from '@hookform/resolvers/zod';
+import { RadioGroup } from '@radix-ui/react-context-menu';
 
 export async function loader() {return {}}
 
@@ -158,7 +159,7 @@ export default function Contact() {
                   {...register('email')} 
                     type="email" 
                     className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
-                    placeholder="your@email.com (We'll contact you with this)"
+                    placeholder="your@email.com"
                   />
                   {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
@@ -192,7 +193,18 @@ export default function Contact() {
               </div>
               
               <div>
-                <label className="block mb-2 text-foreground">Message</label>
+                <label className="block mb-2 text-foreground">Address</label>
+                <input
+                  {...register('address')} 
+                    type="text" 
+                    className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
+                    placeholder="If you'd like it delivered, tell us where"
+                  />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.address?.message}</p>}
+
+                </div>
+              <div>
+                <label className="block mb-2 text-foreground">Description</label>
                 <textarea 
                 {...register('message')}
                   rows={6}
@@ -202,12 +214,13 @@ export default function Contact() {
                 {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
 
               </div>
-              
+              <p className="block mb-2 text-center text-primary">Remember payment confirms an order</p>
+
               <button 
                 type="submit"
                 className="w-full bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-lg"
               >
-                Send Message
+                Submit
               </button>
             </form>
 

@@ -73,10 +73,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>New Order from {{}} ! 🧁</h1>
+            <h1>New Order from {{name}} ! 🧁</h1>
         </div>
         <div class="content">
-            <p>Yay! You've got a new cake inquiry. Here are the lovely details:</p>
+            <p>Yay! You've got a new cake inquiry. Here are the details:</p>
             
             <div class="order-card">
                 <div class="field">
@@ -93,6 +93,12 @@
                     <span class="label">Phone Number</span>
                     <span class="value">{{phone}}</span>
                 </div>
+                                
+                <div class="field">
+                    <span class="label">Address</span>
+                    <span class="value">{{address}}</span>
+                </div>
+
 
                 <div class="field">
                     <span class="label">Event Category</span>
@@ -100,7 +106,7 @@
                 </div>
 
                 <div class="field" style="border-bottom: none;">
-                    <span class="label">The Vision / Message</span>
+                    <span class="label">Description</span>
                     <span class="value" style="display: block; line-height: 1.5; margin-top: 5px;">
                         {{message}}
                     </span>

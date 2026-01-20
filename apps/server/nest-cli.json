@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "assets": ["templates/**/*"],
+    "watchAssets": true
+  }
+}

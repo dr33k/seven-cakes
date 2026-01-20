@@ -8,8 +8,8 @@ export class AppController {
 
   @Post()
   async orderCake(@Body() cakeOrder: CakeOrderDto){
-    console.log('Recieved Data: ', cakeOrder);
-    this.appService.sendEmail(cakeOrder)
-    return {message: 'Email sent'};
+    console.log('New ', cakeOrder.eventType + ' Cake from '+cakeOrder.name);
+    this.appService.sendEmail(cakeOrder);
+    console.log('Sending email');
   }
 }
