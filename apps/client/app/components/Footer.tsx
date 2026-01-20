@@ -40,9 +40,11 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-primary/20 text-center text-muted-foreground">
-          <a href="https://www.flaticon.com/free-icons/cake" title="cake icons">Cake favicon created by surang - Flaticon</a>
-
+        <div style={{fontSize: '12px'}} className="mt-8 pt-8 border-t border-primary/20 text-center text-muted-foreground">
+          <p style={{ opacity: '0.7'}}>
+            Designed with ❤️ by <a href="https://dreek.web.app" target="_blank" rel="noopener" style={{color: 'inherit', textDecoration: 'none', borderBottom: '1px dashed'}}>dr33k</a>
+          </p> 
+          <p>Cake icon by<a href="https://www.flaticon.com/free-icons/cake" title="cake icons" style={{color: 'inherit',borderBottom: '1px dashed'}}> surang</a></p>
           <p>&copy; {new Date().getFullYear()} Yeezah's Cakes. All rights reserved.</p>
         </div>
       </div>
