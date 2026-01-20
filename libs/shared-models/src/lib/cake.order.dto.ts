@@ -20,8 +20,8 @@ export const CakeOrderSchema = z.object({
         error: "Please select a valid event type"
       })
 ,
-  message: z.string().min(10, 'At least 10 characters please').regex(/^[A-Za-z0-9\s\-\/\(\)\'\_\$\&\%\:\@\,\.\?]{10,}$/,'Please enter a valid description (No special characters)'),
-  address: z.string().regex(/^[A-Za-z0-9\s\-\/\(\)\'\_\$\&\%\:\@\,\.]*$/,'Please enter a valid description (No special characters)')
+  message: z.string().min(10, 'At least 10 characters please').max(2000, "At most 2000 characters please"),
+  address: z.string().max(500, "At most 500 characters please")
 
 });
 

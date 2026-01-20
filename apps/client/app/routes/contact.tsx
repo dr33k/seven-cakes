@@ -172,7 +172,7 @@ export default function Contact() {
                 {...register('phone')}
                   type="tel" 
                   className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors"
-                  placeholder="+1 (234) 567-890"
+                  placeholder="080 0000 0000"
                 />
                 {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
 
@@ -208,6 +208,7 @@ export default function Contact() {
                 <textarea 
                 {...register('message')}
                   rows={6}
+                  id='contact-textarea'
                   className="w-full px-4 py-3 rounded-lg border-2 border-primary/20 bg-input-background focus:border-primary focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your dream cake..."
                 ></textarea>
