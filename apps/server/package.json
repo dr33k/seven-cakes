@@ -1,5 +1,5 @@
 {
-  "name": "@yeezahs-cakes/server",
+  "name": "@seven-cakes/server",
   "version": "0.0.1",
   "private": true,
   "nx": {
@@ -27,15 +27,15 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@yeezahs-cakes/server:build",
+          "buildTarget": "@seven-cakes/server:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@yeezahs-cakes/server:build:development"
+            "buildTarget": "@seven-cakes/server:build:development"
           },
           "production": {
-            "buildTarget": "@yeezahs-cakes/server:build:production"
+            "buildTarget": "@seven-cakes/server:build:production"
           }
         }
       }

@@ -8,7 +8,7 @@ export function Header() {
         <nav className="flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2 text-2xl font-bold text-primary" end>
             <Cake className="w-8 h-8" />
-            <span className="text-foreground">Yeezah's Cakes</span>
+            <span className="text-foreground">Seven Cakes</span>
           </NavLink>
           
           <div className="flex gap-8">

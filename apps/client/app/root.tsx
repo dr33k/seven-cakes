@@ -15,7 +15,7 @@ import "./styles/index.css";
 
 export const meta: MetaFunction = () => [
   {
-    title: 'Yeezah\'s Cakes',
+    title: 'Seven Cakes',
   },
 ];
 

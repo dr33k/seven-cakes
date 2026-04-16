@@ -1,9 +1,9 @@
 {
-  "name": "@yeezahs-cakes/source",
+  "name": "@seven-cakes/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many --targets=serve --projects=client,@yeezahs-cakes/server"
+    "start": "nx run-many --targets=serve --projects=client,@seven-cakes/server"
   },
   "private": true,
   "dependencies": {

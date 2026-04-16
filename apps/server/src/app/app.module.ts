@@ -20,7 +20,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
                   }
         },
         defaults:{
-          replyTo: '"No Reply" <noreply@yeezahscakes.com',
+          replyTo: '"No Reply" <noreply@sevencakes.com',
         },
         template:{
           dir: process.cwd() + '/templates/',

@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CakeOrderDto } from '@yeezahs-cakes/shared-models';
+import { CakeOrderDto } from '../../../../libs/shared-models/src/lib/cake.order.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class AppService {
   to = 'mikole76@gmail.com';
-  from = '"Yeezahs Cakes" <sevenpointzerozero@gmail.com>';
+  from = '"Seven Cakes" <sevenpointzerozero@gmail.com>';
 
   constructor(private readonly mailerService: MailerService){
   }

@@ -1,6 +1,6 @@
 import { Body, Post, Controller} from '@nestjs/common';
 import { AppService } from './app.service';
-import {CakeOrderSchema,  CakeOrderDto} from '@yeezahs-cakes/shared-models' ;
+import {CakeOrderSchema,  CakeOrderDto} from '@seven-cakes/shared-models' ;
 
 @Controller('cakes')
 export class AppController {

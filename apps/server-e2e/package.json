@@ -1,10 +1,10 @@
 {
-  "name": "@yeezahs-cakes/server-e2e",
+  "name": "@seven-cakes/server-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@yeezahs-cakes/server"
+      "@seven-cakes/server"
     ],
     "targets": {
       "e2e": {
@@ -17,7 +17,7 @@
           "passWithNoTests": true
         },
         "dependsOn": [
-          "@yeezahs-cakes/server:build"
+          "@seven-cakes/server:build"
         ]
       }
     }

@@ -6,7 +6,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl mb-4 text-primary">About Yeezah's Cakes</h1>
+          <h1 className="text-5xl mb-4 text-primary">About Seven Cakes</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Turning your sweetest dreams into delicious reality
           </p>
@@ -42,7 +42,7 @@ export default function About() {
             </div>
             <div className="prose prose-lg max-w-none text-foreground">
               <p className="mb-4">
-                Welcome to Yeezah's Cakes, where passion meets perfection in every slice! Founded with a love for baking and a commitment to quality, we've been creating memorable cakes that bring joy to celebrations of all kinds.
+                Welcome to Seven Cakes, where passion meets perfection in every slice! Founded with a love for baking and a commitment to quality, we've been creating memorable cakes that bring joy to celebrations of all kinds.
               </p>
               <p className="mb-4">
                 Every cake we create is a labor of love, crafted with the finest ingredients and meticulous attention to detail. Whether it's a wedding, birthday, anniversary, or any special occasion, we believe that every moment deserves a cake as unique and special as the celebration itself.
@@ -88,7 +88,7 @@ export default function About() {
               <h2 className="text-2xl text-primary">Location</h2>
             </div>
             <div className="space-y-3 text-foreground">
-              <p className="font-semibold">Yeezah's Cakes</p>
+              <p className="font-semibold">Seven Cakes</p>
               <p>123 Sweet Street</p>
               <p>Bakery District</p>
               <p>Confection City, CC 12345</p>

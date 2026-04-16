@@ -33,7 +33,7 @@ const testimonials = [
   {
     id: 1,
     name: 'Sarah Johnson',
-    review: 'Yeezah created the most beautiful wedding cake for us! Not only was it stunning, but it tasted absolutely divine. Every guest raved about it!',
+    review: 'Seven created the most beautiful wedding cake for us! Not only was it stunning, but it tasted absolutely divine. Every guest raved about it!',
     rating: 5,
     occasion: 'Wedding'
   },
@@ -47,14 +47,14 @@ const testimonials = [
   {
     id: 3,
     name: 'Emily Rodriguez',
-    review: 'Amazing attention to detail and incredible taste! Yeezah brought my vision to life perfectly. Will definitely order again!',
+    review: 'Amazing attention to detail and incredible taste! Seven brought my vision to life perfectly. Will definitely order again!',
     rating: 5,
     occasion: 'Anniversary'
   },
   {
     id: 4,
     name: 'David Thompson',
-    review: 'Professional, creative, and delicious! The cake was the highlight of our corporate event. Thank you, Yeezah!',
+    review: 'Professional, creative, and delicious! The cake was the highlight of our corporate event. Thank you, Seven!',
     rating: 5,
     occasion: 'Corporate Event'
   }
@@ -127,7 +127,7 @@ export function Homepage() {
       <section className="mb-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 py-8">
-            <h1 className="text-5xl mb-4 text-primary">Welcome to Yeezah's Cakes</h1>
+            <h1 className="text-5xl mb-4 text-primary">Welcome to Seven Cakes</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Where every cake is a masterpiece, crafted with love, creativity, and the finest ingredients
             </p>

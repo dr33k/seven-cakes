@@ -1,6 +1,6 @@
 import { Mail, Phone, Instagram, MapPin, MessageCircle, Radio } from 'lucide-react';
 import { useForm} from 'react-hook-form';
-import { EventType, CakeOrderSchema, CakeOrderDto} from '@yeezahs-cakes/shared-models';
+import { EventType, CakeOrderSchema, CakeOrderDto} from '../../../../libs/shared-models/src/lib/cake.order.dto';
 import { useState } from 'react';
 import { zodResolver} from '@hookform/resolvers/zod';
 import { RadioGroup } from '@radix-ui/react-context-menu';
@@ -11,8 +11,8 @@ export default function Contact() {
 
   const targetPhone = '+23400000000';
   const targetWAPhone = '+23400000000';
-  const targetEmail = 'info@yeezahscakes.com';
-  const instagramLink = "https://www.instagram.com/yeezahs.cakes/" ;
+  const targetEmail = 'info@sevencakes.com';
+  const instagramLink = "https://www.instagram.com/seven.cakes/" ;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -73,7 +73,7 @@ export default function Contact() {
                 <Mail className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl mb-2 text-primary">Email</h3>
-              <p className="text-foreground font-semibold mb-1">info@yeezahscakes.com</p>
+              <p className="text-foreground font-semibold mb-1">info@sevencakes.com</p>
               <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
             </div>
           </a>
@@ -114,7 +114,7 @@ export default function Contact() {
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md"
             >
               <Instagram className="w-5 h-5" />
-              <span>@yeezahs.cakes</span>
+              <span>@seven.cakes</span>
             </a>
           </div>
 
@@ -125,7 +125,7 @@ export default function Contact() {
               <h2 className="text-2xl text-primary">Visit Our Bakery</h2>
             </div>
             <div className="text-foreground space-y-2 mb-6">
-              <p className="font-semibold">Yeezah's Cakes</p>
+              <p className="font-semibold">Seven Cakes</p>
               <p>123 Sweet Street</p>
               <p>Bakery District</p>
               <p>Confection City, CC 12345</p>
@@ -235,7 +235,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <h2 className="text-2xl font-bold mb-2">Sent!</h2>
-                  {/* <p className="text-gray-600 mb-6">Yeezah's Team has been notified</p> */}
+                  {/* <p className="text-gray-600 mb-6">Seven's Team has been notified</p> */}
                   <button 
                     onClick={() => setShowModal(false)}
                     className="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition"

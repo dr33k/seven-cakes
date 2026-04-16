@@ -1,4 +1,4 @@
-# YeezahsCakes
+# SevenCakes
 
 Finish your CI setup
 
