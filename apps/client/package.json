@@ -10,18 +10,25 @@
   "nx": {
     "name": "client",
     "targets": {
-    "build": {
-      "executor": "@nx/vite:build",
-      "options": { "port":4200, "host":"0.0.0.0" },
-      "configurations": {
-        "development": {
-          "mode": "development"
-        },
-        "production": {
-          "mode": "production"
+      "build": {
+        "executor": "@nx/vite:build",
+          "outputs": ["{options.outputPath}"],
+                "options": {
+                  "outputPath": "apps/client/dist/client",
+                  "configFile": "apps/client/vite.config.ts", 
+                  "projectRoot": "./apps/client",
+                  "port": 4200,
+                  "host": "0.0.0.0"
+                },
+              "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production"
+          }
         }
-      }
-    },
+      },
     "serve": {
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",

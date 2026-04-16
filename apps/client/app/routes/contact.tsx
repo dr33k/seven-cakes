@@ -1,6 +1,6 @@
 import { Mail, Phone, Instagram, MapPin, MessageCircle, Radio } from 'lucide-react';
 import { useForm} from 'react-hook-form';
-import { EventType, CakeOrderSchema, CakeOrderDto} from '../../../../libs/shared-models/src/lib/cake.order.dto';
+import { EventType, CakeOrderSchema, CakeOrderDto} from '@seven-cakes/shared-models';
 import { useState } from 'react';
 import { zodResolver} from '@hookform/resolvers/zod';
 import { RadioGroup } from '@radix-ui/react-context-menu';

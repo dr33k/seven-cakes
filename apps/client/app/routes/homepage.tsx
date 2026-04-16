@@ -3,7 +3,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CakeOrderDto } from '../../../../libs/shared-models/src/lib/cake.order.dto';
 
 
 const cakeImages = [

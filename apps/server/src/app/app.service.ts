@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CakeOrderDto } from '../../../../libs/shared-models/src/lib/cake.order.dto';
+import { CakeOrderDto } from '@seven-cakes/shared-models';
 import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
